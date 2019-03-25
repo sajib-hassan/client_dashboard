@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Identity:</strong>
+  <%= @partner_company.identity %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @partner_company.name %>
+</p>
+
+<%= link_to 'Edit', edit_partner_company_path(@partner_company) %> |
+<%= link_to 'Back', partner_companies_path %>

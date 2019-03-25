@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Partner Companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Identity</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @partner_companies.each do |partner_company| %>
+      <tr>
+        <td><%= partner_company.identity %></td>
+        <td><%= partner_company.name %></td>
+        <td><%= link_to 'Show', partner_company %></td>
+        <td><%= link_to 'Edit', edit_partner_company_path(partner_company) %></td>
+        <td><%= link_to 'Destroy', partner_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Partner Company', new_partner_company_path %>
