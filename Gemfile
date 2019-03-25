@@ -43,6 +43,9 @@ gem 'jquery-rails'
 # Use SimpleTokenGenerator to generate identifier for specifix models
 gem 'simple_token_generator', path: '../../gems/simple_token_generator'
 
+# Use Faker to generate more usefull seed data.
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

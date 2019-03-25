@@ -5,3 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+[Client, Consultant, Company, PartnerCompany, Employee, Contractor].each(&:destroy_all)
+
+100.times do
+  client = Client.new
+  client.first_name = Faker::Name.first_name
+  client.last_name = Faker::Name.last_name
+  client.save!
+end
+
+100.times do
+  partner_company = PartnerCompany.create!(name: Faker::Company.unique.name)
+  rand(20).times do
+    contractor = Contractor.new
+    contractor.partner_company_id = partner_company.id
+    contractor.first_name = Faker::Name.first_name
+    contractor.last_name = Faker::Name.last_name
+    rand(10).times do
+      contractor.clients << Client.all.sample
+    end
+    contractor.save!
+  end
+end
+
+100.times do
+  company = Company.create!(name: Faker::Company.unique.name)
+  rand(20).times do
+    employee = Employee.new
+    employee.company_id = company.id
+    employee.first_name = Faker::Name.first_name
+    employee.last_name = Faker::Name.last_name
+    rand(10).times do
+      employee.clients << Client.all.sample
+    end
+    employee.save!
+  end
+end
