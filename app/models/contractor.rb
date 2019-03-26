@@ -5,4 +5,6 @@ class Contractor < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  scope :for_given_clients, -> (client_ids) { joins(:clients).where('clients.id' => client_ids) }
 end

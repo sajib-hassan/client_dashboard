@@ -2,12 +2,17 @@ class Client < ApplicationRecord
   has_many :consultants, dependent: :delete_all
   has_many :employees, through: :consultants
   has_many :contractors, through: :consultants
+  has_many :companies, through: :employees
 
   validates :ctoken, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
 
   before_validation :generate_token, on: :create
+
+  scope :for_given_employees, -> (employee_ids) { joins(:employees).where('employees.id' => employee_ids) }
+  scope :for_given_contractors, -> (contractor_ids) { joins(:contractors).where('contractors.id' => contractor_ids) }
+  scope :for_company, -> (company_id) { joins(:companies).where('companies.id' => company_id) }
 
   private
 

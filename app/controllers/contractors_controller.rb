@@ -4,7 +4,13 @@ class ContractorsController < ApplicationController
   # GET /contractors
   # GET /contractors.json
   def index
-    @contractors = Contractor.all
+    if params[:partner_company_id].present?
+      @contractors = Contractor.where(partner_company_id: params[:partner_company_id]).all
+    elsif params[:company_id].present?
+      @contractors = Contractor.for_given_clients(Company.where(id: params[:company_id]).first.client_ids).all
+    else
+      @contractors = Contractor.all
+    end
   end
 
   # GET /contractors/1
@@ -69,6 +75,6 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:first_name, :last_name, :partner_company_id)
+      params.require(:contractor).permit(:first_name, :last_name, :partner_company_id, :company_id)
     end
 end
