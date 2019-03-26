@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "clients/new", type: :view do
   before(:each) do
-    assign(:client, Client.new(
-      :ctoken => "MyString",
-      :first_name => "MyString",
-      :last_name => "MyString"
-    ))
+    assign(:client, build(:client))
   end
 
   it "renders new client form" do

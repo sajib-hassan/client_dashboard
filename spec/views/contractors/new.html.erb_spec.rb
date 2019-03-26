@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "contractors/new", type: :view do
   before(:each) do
-    assign(:contractor, Contractor.new(
-      :first_name => "MyString",
-      :last_name => "MyString",
-      :partner_company => nil
-    ))
+    assign(:contractor, build(:contractor))
   end
 
   it "renders new contractor form" do

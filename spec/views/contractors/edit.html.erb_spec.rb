@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "contractors/edit", type: :view do
   before(:each) do
-    @contractor = assign(:contractor, Contractor.create!(
-      :first_name => "MyString",
-      :last_name => "MyString",
-      :partner_company => nil
-    ))
+    @contractor = assign(:contractor, create(:contractor))
   end
 
   it "renders the edit contractor form" do

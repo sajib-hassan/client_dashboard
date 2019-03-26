@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "partner_companies/new", type: :view do
   before(:each) do
-    assign(:partner_company, PartnerCompany.new(
-      :identity => "MyString",
-      :name => "MyString"
-    ))
+    assign(:partner_company, build(:partner_company))
   end
 
   it "renders new partner_company form" do

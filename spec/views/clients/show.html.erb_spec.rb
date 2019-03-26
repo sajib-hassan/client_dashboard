@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "clients/show", type: :view do
   before(:each) do
-    @client = assign(:client, Client.create!(
-      :ctoken => "Ctoken",
-      :first_name => "First Name",
-      :last_name => "Last Name"
-    ))
+    @client = assign(:client, create(:client))
   end
 
   it "renders attributes in <p>" do

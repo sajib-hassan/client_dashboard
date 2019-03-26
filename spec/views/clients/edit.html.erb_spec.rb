@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "clients/edit", type: :view do
   before(:each) do
-    @client = assign(:client, Client.create!(
-      :ctoken => "MyString",
-      :first_name => "MyString",
-      :last_name => "MyString"
-    ))
+    @client = assign(:client, create(:client))
   end
 
   it "renders the edit client form" do

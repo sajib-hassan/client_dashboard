@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "partner_companies/show", type: :view do
   before(:each) do
-    @partner_company = assign(:partner_company, PartnerCompany.create!(
-      :identity => "Identity",
-      :name => "Name"
-    ))
+    @partner_company = assign(:partner_company, create(:partner_company))
   end
 
   it "renders attributes in <p>" do

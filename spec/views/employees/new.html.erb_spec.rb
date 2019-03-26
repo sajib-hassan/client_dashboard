@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "employees/new", type: :view do
   before(:each) do
-    assign(:employee, Employee.new(
-      :identifier => "MyString",
-      :first_name => "MyString",
-      :last_name => "MyString",
-      :company => nil
-    ))
+    assign(:employee, build(:employee))
   end
 
   it "renders new employee form" do
