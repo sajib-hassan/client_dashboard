@@ -13,4 +13,12 @@ RSpec.describe "clients/index", type: :view do
     assert_select 'tr>td', text: @client.first_name.to_s, count: 2
     assert_select 'tr>td', text: @second_client.last_name.to_s, count: 2
   end
+
+  it 'renders a table with columns' do
+    render
+    assert_select 'tr>th', text: 'First Name', count: 1
+    assert_select 'tr>th', text: 'Last Name', count: 1
+    assert_select 'tr>th', text: 'Consultants', count: 1
+    assert_select 'tr>th', text: 'Company Name', count: 1
+  end
 end
