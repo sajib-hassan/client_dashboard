@@ -1,5 +1,6 @@
-PATH
-  remote: ../../gems/simple_token_generator
+GIT
+  remote: https://github.com/nicosticht/simple_token_generator.git
+  revision: 191977f0a32e07cd2efbf2c9a2aa18852ef68361
   specs:
     simple_token_generator (0.1.0)
 

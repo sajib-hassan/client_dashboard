@@ -41,7 +41,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 # Use SimpleTokenGenerator to generate identifier for specifix models
-gem 'simple_token_generator', path: '../../gems/simple_token_generator'
+gem 'simple_token_generator', github: 'nicosticht/simple_token_generator'
 
 # Use Faker to generate more usefull seed data.
 gem 'faker'
