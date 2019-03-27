@@ -7,6 +7,8 @@ class ClientsController < ApplicationController
     @title = 'Clients'
     if params[:company_id]
       @clients = Client.for_company(params[:company_id]).all
+    elsif params[:partner_company_id]
+      @clients = Client.for_partner_company(params[:partner_company_id]).all
     elsif params[:employee_id]
       @clients = Client.for_given_employees(params[:employee_id]).all
     else
@@ -76,6 +78,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:ctoken, :first_name, :last_name, :employee_id)
+      params.require(:client).permit(:ctoken, :first_name, :last_name, :employee_id, :partner_company_id)
     end
 end

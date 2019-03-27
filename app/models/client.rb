@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   has_many :employees, through: :consultants
   has_many :contractors, through: :consultants
   has_many :companies, through: :employees
+  has_many :partner_companies, through: :contractors
 
   validates :ctoken, presence: true, uniqueness: true
   validates :first_name, presence: true
@@ -13,6 +14,7 @@ class Client < ApplicationRecord
   scope :for_given_employees, -> (employee_ids) { joins(:employees).where('employees.id' => employee_ids) }
   scope :for_given_contractors, -> (contractor_ids) { joins(:contractors).where('contractors.id' => contractor_ids) }
   scope :for_company, -> (company_id) { joins(:companies).where('companies.id' => company_id) }
+  scope :for_partner_company, -> (partner_company_id) { joins(:partner_companies).where('partner_companies.id' => partner_company_id) }
 
   private
 
