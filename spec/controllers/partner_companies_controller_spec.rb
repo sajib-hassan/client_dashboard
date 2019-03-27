@@ -42,6 +42,12 @@ RSpec.describe PartnerCompaniesController, type: :controller do
   # PartnerCompaniesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  # login to http basic auth
+  include AuthHelper
+  before(:each) do
+    http_login
+  end
+
   describe 'GET #index' do
     it 'returns a success response' do
       PartnerCompany.create! valid_attributes

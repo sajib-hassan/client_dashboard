@@ -10,8 +10,6 @@ RSpec.describe "clients/edit", type: :view do
 
     assert_select "form[action=?][method=?]", client_path(@client), "post" do
 
-      assert_select "input[name=?]", "client[ctoken]"
-
       assert_select "input[name=?]", "client[first_name]"
 
       assert_select "input[name=?]", "client[last_name]"

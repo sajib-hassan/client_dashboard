@@ -18,7 +18,6 @@ RSpec.describe "clients/index", type: :view do
     render
     assert_select 'tr>th', text: 'First Name', count: 1
     assert_select 'tr>th', text: 'Last Name', count: 1
-    assert_select 'tr>th', text: 'Consultants', count: 1
-    assert_select 'tr>th', text: 'Company Name', count: 1
+    assert_select 'tr>th', text: 'Consultants (Company)', count: 1
   end
 end

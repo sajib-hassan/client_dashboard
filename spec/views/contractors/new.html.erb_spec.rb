@@ -14,7 +14,7 @@ RSpec.describe "contractors/new", type: :view do
 
       assert_select "input[name=?]", "contractor[last_name]"
 
-      assert_select "input[name=?]", "contractor[partner_company_id]"
+      assert_select "select[name=?]", "contractor[partner_company_id]"
     end
   end
 end

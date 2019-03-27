@@ -10,8 +10,6 @@ RSpec.describe "partner_companies/edit", type: :view do
 
     assert_select "form[action=?][method=?]", partner_company_path(@partner_company), "post" do
 
-      assert_select "input[name=?]", "partner_company[identity]"
-
       assert_select "input[name=?]", "partner_company[name]"
     end
   end

@@ -42,6 +42,12 @@ RSpec.describe ClientsController, type: :controller do
   # ClientsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  # login to http basic auth
+  include AuthHelper
+  before(:each) do
+    http_login
+  end
+
   describe 'GET #index' do
     it 'returns a success response' do
       Client.create! valid_attributes

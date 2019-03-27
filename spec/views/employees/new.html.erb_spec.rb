@@ -10,13 +10,11 @@ RSpec.describe "employees/new", type: :view do
 
     assert_select "form[action=?][method=?]", employees_path, "post" do
 
-      assert_select "input[name=?]", "employee[identifier]"
-
       assert_select "input[name=?]", "employee[first_name]"
 
       assert_select "input[name=?]", "employee[last_name]"
 
-      assert_select "input[name=?]", "employee[company_id]"
+      assert_select "select[name=?]", "employee[company_id]"
     end
   end
 end
