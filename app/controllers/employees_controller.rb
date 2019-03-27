@@ -4,7 +4,6 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @title = 'Employees'
     if params[:company_id].present?
       @employees = Employee.where(company_id: params[:company_id]).all
     else

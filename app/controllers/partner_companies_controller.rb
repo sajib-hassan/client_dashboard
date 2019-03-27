@@ -4,7 +4,6 @@ class PartnerCompaniesController < ApplicationController
   # GET /partner_companies
   # GET /partner_companies.json
   def index
-    @title = 'Partner Companies'
     @partner_companies = PartnerCompany.all
   end
 

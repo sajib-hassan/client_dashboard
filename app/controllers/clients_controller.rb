@@ -4,7 +4,6 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @title = 'Clients'
     if params[:company_id]
       @clients = Client.for_company(params[:company_id]).all
     elsif params[:partner_company_id]
