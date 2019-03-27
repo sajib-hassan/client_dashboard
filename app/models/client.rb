@@ -16,6 +16,10 @@ class Client < ApplicationRecord
   scope :for_company, -> (company_id) { joins(:companies).where('companies.id' => company_id) }
   scope :for_partner_company, -> (partner_company_id) { joins(:partner_companies).where('partner_companies.id' => partner_company_id) }
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def generate_token

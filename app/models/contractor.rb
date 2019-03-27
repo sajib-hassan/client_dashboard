@@ -7,4 +7,8 @@ class Contractor < ApplicationRecord
   validates :last_name, presence: true
 
   scope :for_given_clients, -> (client_ids) { joins(:clients).where('clients.id' => client_ids) }
+
+  def client_ids
+    clients.pluck(:id)
+  end
 end
