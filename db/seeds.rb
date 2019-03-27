@@ -8,7 +8,7 @@
 
 [Client, Consultant, Company, PartnerCompany, Employee, Contractor].each(&:destroy_all)
 
-100.times do
+1000.times do
   client = Client.new
   client.first_name = Faker::Name.first_name
   client.last_name = Faker::Name.last_name
