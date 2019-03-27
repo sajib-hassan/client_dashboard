@@ -11,27 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :identifier %>
-    <%= form.text_field :identifier %>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :first_name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-4">
+        <%= form.text_field :first_name, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :last_name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-4">
+        <%= form.text_field :last_name, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :company_id, class: "col-sm-2 control-label" %>
+      <div class="col-sm-4">
+        <%= form.collection_select :company_id, Company.all, :id, :name, {}, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :company_id %>
-    <%= form.text_field :company_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

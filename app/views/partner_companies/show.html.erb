@@ -1,12 +1,14 @@
-<p>
-  <strong>Identity:</strong>
-  <%= @partner_company.identity %>
-</p>
+<div class="container">
+  <p>
+    <strong>Identity:</strong>
+    <%= @partner_company.identity %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @partner_company.name %>
-</p>
-
-<%= link_to 'Edit', edit_partner_company_path(@partner_company) %> |
-<%= link_to 'Back', partner_companies_path %>
+  <p>
+    <strong>Name:</strong>
+    <%= @partner_company.name %>
+  </p>
+</div>
+<div class="container">
+  <%= link_to 'Edit', edit_partner_company_path(@partner_company) %> | <%= link_to 'Back', partner_companies_path %>
+</div>

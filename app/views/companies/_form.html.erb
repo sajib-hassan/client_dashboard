@@ -11,17 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :identity %>
-    <%= form.text_field :identity %>
+   <div class="form-group">
+    <div class="field">
+      <%= form.label :name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-4">
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
