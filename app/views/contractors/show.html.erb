@@ -1,18 +1,18 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
-  <strong>First name:</strong>
+  <strong>First Name:</strong>
   <%= @contractor.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong>Last Name:</strong>
   <%= @contractor.last_name %>
 </p>
 
 <p>
-  <strong>Partner company:</strong>
-  <%= @contractor.partner_company %>
+  <strong>Partner Company:</strong>
+  <%= @contractor.partner_company.name %>
 </p>
 
 <%= link_to 'Edit', edit_contractor_path(@contractor) %> |

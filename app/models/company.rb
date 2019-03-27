@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Company < ApplicationRecord
-  has_many :employees, dependent: :delete_all
+  has_many :employees, dependent: :destroy
   has_many :clients, through: :employees
 
   validates :name, presence: true

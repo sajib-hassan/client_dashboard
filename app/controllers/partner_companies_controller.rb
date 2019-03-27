@@ -4,6 +4,7 @@ class PartnerCompaniesController < ApplicationController
   # GET /partner_companies
   # GET /partner_companies.json
   def index
+    @title = 'Partner Companies'
     @partner_companies = PartnerCompany.all
   end
 
@@ -28,7 +29,7 @@ class PartnerCompaniesController < ApplicationController
 
     respond_to do |format|
       if @partner_company.save
-        format.html { redirect_to @partner_company, notice: 'Partner company was successfully created.' }
+        format.html { redirect_to @partner_company, notice: 'Partner Company was successfully created.' }
         format.json { render :show, status: :created, location: @partner_company }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class PartnerCompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @partner_company.update(partner_company_params)
-        format.html { redirect_to @partner_company, notice: 'Partner company was successfully updated.' }
+        format.html { redirect_to @partner_company, notice: 'Partner Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @partner_company }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class PartnerCompaniesController < ApplicationController
   def destroy
     @partner_company.destroy
     respond_to do |format|
-      format.html { redirect_to partner_companies_url, notice: 'Partner company was successfully destroyed.' }
+      format.html { redirect_to partner_companies_url, notice: 'Partner Company was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

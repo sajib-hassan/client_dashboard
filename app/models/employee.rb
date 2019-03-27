@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
   belongs_to :company
-  has_many :consultants
+  has_many :consultants, dependent: :destroy
   has_many :clients, through: :consultants
 
   validates :identifier, presence: true, uniqueness: true
@@ -10,6 +10,10 @@ class Employee < ApplicationRecord
   before_validation :generate_token, on: :create
 
   scope :for_given_clients, -> (client_ids) { joins(:clients).where('clients.id' => client_ids) }
+
+  def client_ids
+    clients.pluck(:id)
+  end
 
   private
 

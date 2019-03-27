@@ -4,6 +4,7 @@ class ContractorsController < ApplicationController
   # GET /contractors
   # GET /contractors.json
   def index
+    @title = 'Contractors'
     if params[:partner_company_id].present?
       @contractors = Contractor.where(partner_company_id: params[:partner_company_id]).all
     elsif params[:company_id].present?

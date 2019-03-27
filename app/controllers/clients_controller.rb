@@ -4,8 +4,11 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
+    @title = 'Clients'
     if params[:company_id]
       @clients = Client.for_company(params[:company_id]).all
+    elsif params[:employee_id]
+      @clients = Client.for_given_employees(params[:employee_id]).all
     else
       @clients = Client.all
     end
@@ -73,6 +76,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:ctoken, :first_name, :last_name)
+      params.require(:client).permit(:ctoken, :first_name, :last_name, :employee_id)
     end
 end

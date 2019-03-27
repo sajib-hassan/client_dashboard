@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-  has_many :consultants, dependent: :delete_all
+  has_many :consultants, dependent: :destroy
   has_many :employees, through: :consultants
   has_many :contractors, through: :consultants
   has_many :companies, through: :employees
