@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/nicosticht/simple_token_generator.git
-  revision: 191977f0a32e07cd2efbf2c9a2aa18852ef68361
+  revision: a217d48d93f07e745e68c99744ad3cdc84be0a6d
   specs:
-    simple_token_generator (0.1.0)
+    simple_token_generator (0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -52,7 +52,7 @@ GEM
     autoprefixer-rails (9.5.0)
       execjs
     bindex (0.5.0)
-    bootsnap (1.4.1)
+    bootsnap (1.4.2)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
