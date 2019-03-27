@@ -13,9 +13,9 @@ RSpec.describe 'companies/index', type: :view do
     render
     assert_select 'tr>td', text: @company.identity.to_s, count: 1
     assert_select 'tr>td', text: @company.name.to_s, count: 2
-    assert_select 'a[href=?]', employees_path, count: 2
-    assert_select 'a[href=?]', contractors_path, count: 2
-    assert_select 'a[href=?]', clients_path, count: 2
+    assert_select 'a[href=?]', employees_path(company_id: @company), count: 1
+    assert_select 'a[href=?]', contractors_path(company_id: @company), count: 1
+    assert_select 'a[href=?]', clients_path(company_id: @company), count: 1
   end
 
   it 'renders a table with columns' do

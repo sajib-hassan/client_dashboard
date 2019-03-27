@@ -13,8 +13,8 @@ RSpec.describe 'partner_companies/index', type: :view do
     render
     assert_select 'tr>td', text: @partner_company.identity.to_s, count: 1
     assert_select 'tr>td', text: @partner_company.name.to_s, count: 2
-    assert_select 'a[href=?]', contractors_path, count: 2
-    assert_select 'a[href=?]', clients_path, count: 2
+    assert_select 'a[href=?]', contractors_path(partner_company_id: @partner_company), count: 1
+    assert_select 'a[href=?]', clients_path(partner_company_id: @partner_company), count: 1
   end
 
   it 'renders a table with columns' do

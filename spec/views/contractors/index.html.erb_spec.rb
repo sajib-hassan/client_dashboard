@@ -17,7 +17,7 @@ RSpec.describe "contractors/index", type: :view do
     render
     assert_select 'tr>th', text: 'First Name', count: 1
     assert_select 'tr>th', text: 'Last Name', count: 1
-    assert_select 'tr>th', text: 'PartnerCompany Identifier', count: 1
+    assert_select 'tr>th', text: 'Partner Company Identifier', count: 1
     assert_select 'tr>th', text: 'Clients', count: 1
     assert_select 'tr>th', text: 'Clients without Employees', count: 1
   end
