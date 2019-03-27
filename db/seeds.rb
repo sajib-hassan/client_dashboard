@@ -22,9 +22,11 @@ end
     contractor.partner_company_id = partner_company.id
     contractor.first_name = Faker::Name.first_name
     contractor.last_name = Faker::Name.last_name
+    clients = []
     rand(3).times do
-      contractor.clients << Client.all.sample
+      clients << Client.all.sample
     end
+    contractor.clients = clients.uniq
     contractor.save!
   end
 end
@@ -36,9 +38,11 @@ end
     employee.company_id = company.id
     employee.first_name = Faker::Name.first_name
     employee.last_name = Faker::Name.last_name
-    rand(10).times do
-      employee.clients << Client.all.sample
+    clients = []
+    rand(3).times do
+      clients << Client.all.sample
     end
+    employee.clients = clients.uniq
     employee.save!
   end
 end
