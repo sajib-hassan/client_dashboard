@@ -39,6 +39,9 @@ gem "bootsnap", ">= 1.1.0", require: false
 # Use Bootstrap to create a simple UI
 gem "bootstrap", "~> 4.3.1"
 gem "jquery-rails"
+gem "dropzonejs-rails", "~> 0.8"
+
+gem "roo", "~> 2.8.0"
 
 # Use SimpleTokenGenerator to generate identifier for specifix models
 gem "simple_token_generator", github: "nicosticht/simple_token_generator"
