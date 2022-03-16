@@ -10,22 +10,23 @@ class Company < ApplicationRecord
   before_validation :generate_token, on: :create
 
   def employee_ids
-    employees.pluck(:id)
+    employees.ids
   end
 
   def client_ids
-    clients.pluck(:id)
+    clients.ids
   end
 
   def contractor_ids
-    Contractor.for_given_clients(client_ids).pluck(:id)
+    Contractor.for_given_clients(client_ids).ids
   end
 
   private
 
   def generate_token
-    begin
+    loop do
       self.identity = SimpleTokenGenerator::Generator.call
-    end while self.class.exists?(identity: identity)
+      break unless self.class.exists?(identity: identity)
+    end
   end
 end

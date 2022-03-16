@@ -8,18 +8,19 @@ class PartnerCompany < ApplicationRecord
   before_validation :generate_token, on: :create
 
   def client_ids
-    clients.pluck(:id)
+    clients.ids
   end
 
   def contractor_ids
-    contractors.pluck(:id)
+    contractors.ids
   end
 
   private
 
   def generate_token
-    begin
-      self.identity = SimpleTokenGenerator::Generator.call(prefix: 'P/')
-    end while self.class.exists?(identity: identity)
+    loop do
+      self.identity = SimpleTokenGenerator::Generator.call(prefix: "P/")
+      break unless self.class.exists?(identity: identity)
+    end
   end
 end

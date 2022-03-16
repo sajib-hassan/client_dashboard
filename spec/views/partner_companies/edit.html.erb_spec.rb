@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "partner_companies/edit", type: :view do
-  before(:each) do
+RSpec.describe("partner_companies/edit", type: :view) do
+  before do
     @partner_company = assign(:partner_company, create(:partner_company))
   end
 
@@ -9,7 +9,6 @@ RSpec.describe "partner_companies/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", partner_company_path(@partner_company), "post" do
-
       assert_select "input[name=?]", "partner_company[name]"
     end
   end

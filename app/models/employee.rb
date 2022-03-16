@@ -9,17 +9,18 @@ class Employee < ApplicationRecord
 
   before_validation :generate_token, on: :create
 
-  scope :for_given_clients, -> (client_ids) { joins(:clients).where('clients.id' => client_ids) }
+  scope :for_given_clients, -> (client_ids) { joins(:clients).where("clients.id" => client_ids) }
 
   def client_ids
-    clients.pluck(:id)
+    clients.ids
   end
 
   private
 
   def generate_token
-    begin
+    loop do
       self.identifier = SimpleTokenGenerator::Generator.call(slices: 3, size_of_slice: 2)
-    end while self.class.exists?(identifier: identifier)
+      break unless self.class.exists?(identifier: identifier)
+    end
   end
 end

@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "clients/edit", type: :view do
-  before(:each) do
+RSpec.describe("clients/edit", type: :view) do
+  before do
     @client = assign(:client, create(:client))
   end
 
@@ -9,7 +9,6 @@ RSpec.describe "clients/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", client_path(@client), "post" do
-
       assert_select "input[name=?]", "client[first_name]"
 
       assert_select "input[name=?]", "client[last_name]"

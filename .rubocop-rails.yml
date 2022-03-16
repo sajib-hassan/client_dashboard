@@ -58,3 +58,6 @@ Rails/WhereExists:
 
 Rails/WhereNot:
   Enabled: true
+
+Rails/I18nLocaleTexts:
+  Enabled: false

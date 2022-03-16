@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "contractors/new", type: :view do
-  before(:each) do
+RSpec.describe("contractors/new", type: :view) do
+  before do
     assign(:contractor, build(:contractor))
   end
 
@@ -9,7 +9,6 @@ RSpec.describe "contractors/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", contractors_path, "post" do
-
       assert_select "input[name=?]", "contractor[first_name]"
 
       assert_select "input[name=?]", "contractor[last_name]"
