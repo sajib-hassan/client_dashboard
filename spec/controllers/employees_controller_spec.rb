@@ -148,4 +148,29 @@ RSpec.describe(EmployeesController, type: :controller) do
       expect(response).to(redirect_to(employees_url))
     end
   end
+
+  describe "POST #import" do
+    it "returns correct errors if excel is invalid" do
+      post :import,
+        session: valid_session,
+        params: {file: file_fixture("missing_data.xlsx")}
+
+      expect(response).to(have_http_status(:bad_request))
+      expect(JSON.parse(response.body).keys).to(include("error"))
+      expect(JSON.parse(response.body).keys).to(include("detail"))
+    end
+
+    it "correctlies create employees" do
+      create(:company).tap { |c| c.update!(identity: "abc") }
+      create(:company).tap { |c| c.update!(identity: "def") }
+      create(:client).tap { |c| c.update!(ctoken: "abc") }
+      create(:client).tap { |c| c.update!(ctoken: "def") }
+
+      post :import,
+        session: valid_session,
+        params: {file: file_fixture("valid_excel.xlsx")}
+
+      expect(response).to(have_http_status(:ok))
+    end
+  end
 end
