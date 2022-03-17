@@ -9,7 +9,7 @@ class Contractor < ApplicationRecord
   scope :for_given_clients, -> (client_ids) { joins(:clients).where("clients.id" => client_ids) }
 
   def clients_without_employees
-    clients - Client.joins(:consultants).where("consultants.employee_id").uniq
+    clients - Client.joins(:consultants).where.not(consultants: {employee_id: nil}).uniq
   end
 
   def client_ids
