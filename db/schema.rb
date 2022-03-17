@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_03_16_205856) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_205856) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -58,9 +61,9 @@ ActiveRecord::Schema.define(version: 2022_03_16_205856) do
   end
 
   create_table "consultants", force: :cascade do |t|
-    t.integer "client_id"
-    t.integer "contractor_id"
-    t.integer "employee_id"
+    t.bigint "client_id"
+    t.bigint "contractor_id"
+    t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_consultants_on_client_id"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_205856) do
   create_table "contractors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "partner_company_id"
+    t.bigint "partner_company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["partner_company_id"], name: "index_contractors_on_partner_company_id"
@@ -81,7 +84,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_205856) do
     t.string "identifier"
     t.string "first_name"
     t.string "last_name"
-    t.integer "company_id"
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_employees_on_company_id"
@@ -98,4 +101,9 @@ ActiveRecord::Schema.define(version: 2022_03_16_205856) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "consultants", "clients"
+  add_foreign_key "consultants", "contractors"
+  add_foreign_key "consultants", "employees"
+  add_foreign_key "contractors", "partner_companies"
+  add_foreign_key "employees", "companies"
 end
