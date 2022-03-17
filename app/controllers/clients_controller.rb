@@ -1,18 +1,10 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: %i[show edit update destroy]
 
   # GET /clients
   # GET /clients.json
   def index
-    @clients = if params[:company_id]
-      Client.for_company(params[:company_id]).all
-    elsif params[:partner_company_id]
-      Client.for_partner_company(params[:partner_company_id]).all
-    elsif params[:employee_id]
-      Client.for_given_employees(params[:employee_id]).all
-    else
-      Client.all
-    end
+    @clients = client_scope.all
   end
 
   # GET /clients/1
@@ -70,6 +62,14 @@ class ClientsController < ApplicationController
   end
 
   private
+
+  def client_scope
+    return Client.for_company(params[:company_id]) if params[:company_id]
+    return Client.for_partner_company(params[:partner_company_id]) if params[:partner_company_id]
+    return Client.for_given_employees(params[:employee_id]) if params[:employee_id]
+
+    Client
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_client

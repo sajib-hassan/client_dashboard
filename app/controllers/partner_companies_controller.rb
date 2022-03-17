@@ -1,5 +1,5 @@
 class PartnerCompaniesController < ApplicationController
-  before_action :set_partner_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_partner_company, only: %i[show edit update destroy]
 
   # GET /partner_companies
   # GET /partner_companies.json

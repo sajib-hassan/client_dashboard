@@ -1,16 +1,10 @@
 class ContractorsController < ApplicationController
-  before_action :set_contractor, only: [:show, :edit, :update, :destroy]
+  before_action :set_contractor, only: %i[show edit update destroy]
 
   # GET /contractors
   # GET /contractors.json
   def index
-    @contractors = if params[:partner_company_id].present?
-      Contractor.where(partner_company_id: params[:partner_company_id]).all
-    elsif params[:company_id].present?
-      Contractor.for_given_clients(Company.where(id: params[:company_id]).first.client_ids).all
-    else
-      Contractor.all
-    end
+    @contractors = contractor_scope.all
   end
 
   # GET /contractors/1
@@ -68,6 +62,13 @@ class ContractorsController < ApplicationController
   end
 
   private
+
+  def contractor_scope
+    return Contractor.where(partner_company_id: params[:partner_company_id]) if params[:partner_company_id].present?
+    return Contractor.for_given_clients(Company.find(params[:company_id]).client_ids) if params[:company_id].present?
+
+    Contractor
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_contractor

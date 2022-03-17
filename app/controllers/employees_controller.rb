@@ -1,5 +1,7 @@
+require "employee_importer"
+
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: %i[show edit update destroy]
 
   # GET /employees
   # GET /employees.json
@@ -63,6 +65,16 @@ class EmployeesController < ApplicationController
       format.html { redirect_to(employees_url, notice: "Employee was successfully destroyed.") }
       format.json { head(:no_content) }
     end
+  end
+
+  # POST /employees/import
+  def import
+    EmployeeImporter.new(params[:file]).call
+    head(:ok)
+  rescue EmployeeImporter::FileValidationError => e
+    render(json: {error: "File structure is incorrect", detail: e.message}, status: :bad_request)
+  rescue EmployeeImporter::InvalidFileError => e
+    render(json: {error: e.message, detail: e.message}, status: :bad_request)
   end
 
   private
